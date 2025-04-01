@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Easter Story Reading</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fff8f0;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #5a3e36;
+    }
+    img {
+      max-width: 90%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <h1>Come Hear the Easter Story</h1>
+  <p>Join us at the SIU Amphitheater between Neckers Hall and the Student Center</p>
+  <p>Free event • All ages welcome • Gift bags for the first 200 attendees</p>
+  <img src="easter-poster.png" alt="Easter Poster">
+</body>
+</html>
