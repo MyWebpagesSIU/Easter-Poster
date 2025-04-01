@@ -7,19 +7,61 @@
   <style>
     body {
       font-family: 'Georgia', serif;
-      background-color: #fff8f0;
+      background: linear-gradient(
+        135deg,
+        #dceefb,
+        #dff5e1,
+        #fde2e4
+      );
+      background-attachment: fixed;
+      background-size: cover;
       text-align: center;
       padding: 2rem;
+      color: #4a2c2a;
     }
+
     h1 {
-      color: #5a3e36;
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
     }
+
+    p {
+      font-size: 1.35rem;
+      margin: 0.5rem 0 1rem;
+    }
+
     img {
-      max-width: 90%;
+      max-width: 65%;
       height: auto;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border: 3px solid #d8cfc1;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+      margin-top: 2rem;
+    }
+
+    .reading-preview {
+      max-width: 600px;
+      margin: 3rem auto 2rem;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .reading-preview h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: #3e2b29;
+    }
+
+    .reading-preview ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .reading-preview li {
+      font-size: 1.1rem;
+      margin: 0.4rem 0;
     }
   </style>
 </head>
@@ -27,6 +69,20 @@
   <h1>Come Hear the Easter Story</h1>
   <p>Join us at the SIU Amphitheater between Neckers Hall and the Student Center</p>
   <p>Free event • All ages welcome • Gift bags for the first 200 attendees</p>
-  <img src="Easter-Poster.png" alt="Easter Poster" style="max-width: 100%; height: auto; border-radius: 12px;">
+  <img src="Easter-Poster.png" alt="Easter Poster">
+
+  <div class="reading-preview">
+    <h2>Preview of the Reading</h2>
+    <ul>
+      <li>Luke 22:7–23 – The Last Supper</li>
+      <li>Luke 22:39–53 – Gethsemane & Arrest</li>
+      <li>Luke 22:63–71 – Jesus mocked and tried</li>
+      <li>Luke 23:1–25 – Before Pilate and Herod</li>
+      <li>Luke 23:26–49 – The Crucifixion</li>
+      <li>Luke 23:50–56 – Burial</li>
+      <li>Luke 24:1–12 – Resurrection morning</li>
+      <li>(Optional) Luke 24:13–35 – Road to Emmaus</li>
+    </ul>
+  </div>
 </body>
 </html>
