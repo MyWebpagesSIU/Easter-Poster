@@ -7,12 +7,7 @@
   <style>
     body {
       font-family: 'Georgia', serif;
-      background: linear-gradient(
-        135deg,
-        #dceefb,
-        #dff5e1,
-        #fde2e4
-      );
+      background: linear-gradient(135deg, #dceefb, #dff5e1, #fde2e4);
       background-attachment: fixed;
       background-size: cover;
       text-align: center;
@@ -63,6 +58,19 @@
       font-size: 1.1rem;
       margin: 0.4rem 0;
     }
+
+    .rsvp-section {
+      margin-top: 3rem;
+    }
+
+    .rsvp-section button {
+      font-size: 1.1rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      background-color: #ffd6e0;
+      border: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -84,5 +92,72 @@
       <li>(Optional) Luke 24:13–35 – Road to Emmaus</li>
     </ul>
   </div>
+
+  <div class="rsvp-section">
+    <p><strong><span id="counter">...</span></strong> people are planning to attend!</p>
+    <button id="rsvp-button" onclick="rsvp()">I'm planning to come!</button>
+  </div>
+
+  <script>
+    const binLatestUrl = 'https://api.jsonbin.io/v3/b/67eb4c5b8960c979a57c12fc/latest';
+    const binPutUrl = 'https://api.jsonbin.io/v3/b/67eb4c5b8960c979a57c12fc';
+    const masterKey = '$2a$10$IbBfbFnzKc1OvTjF485gU.QLmk/dPP64sakkE1.XQlbtScl.yLzci';
+
+    const headers = {
+      'X-Master-Key': masterKey
+    };
+
+    async function loadCount() {
+      try {
+        const res = await fetch(binLatestUrl, { headers });
+        const data = await res.json();
+        document.getElementById("counter").textContent = data.record.count;
+
+        if (localStorage.getItem("hasRSVPed")) {
+          disableButton();
+        }
+      } catch (err) {
+        console.error("Failed to load RSVP count", err);
+        document.getElementById("counter").textContent = "N/A";
+      }
+    }
+
+    async function rsvp() {
+      if (localStorage.getItem("hasRSVPed")) return;
+
+      try {
+        const res = await fetch(binLatestUrl, { headers });
+        const data = await res.json();
+        let newCount = data.record.count + 1;
+
+        await fetch(binPutUrl, {
+          method: 'PUT',
+          headers: {
+            ...headers,
+            'Content-Type': 'application/json',
+            'X-Bin-Versioning': 'false'
+          },
+          body: JSON.stringify({ count: newCount })
+        });
+
+        document.getElementById("counter").textContent = newCount;
+        localStorage.setItem("hasRSVPed", true);
+        disableButton();
+      } catch (err) {
+        console.error("Failed to update RSVP", err);
+        alert("Something went wrong. Please try again.");
+      }
+    }
+
+    function disableButton() {
+      const btn = document.getElementById("rsvp-button");
+      btn.disabled = true;
+      btn.textContent = "Thanks for RSVPing!";
+      btn.style.backgroundColor = "#ccc";
+      btn.style.cursor = "not-allowed";
+    }
+
+    loadCount();
+  </script>
 </body>
 </html>
